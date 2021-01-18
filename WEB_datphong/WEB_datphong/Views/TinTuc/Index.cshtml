@@ -1,0 +1,128 @@
+﻿@model IEnumerable<HotelConection.TINTUC>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tin Tức</title>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap"
+          rel="stylesheet" />
+    <link rel="stylesheet"
+          href="/font/fontawesome-free-5.14.0-web/css/all.min.css" />
+    <link rel="stylesheet" href="~/Asset/css/LienHe.css" />
+    <link rel="stylesheet" href="~/Asset/base.css" />
+</head>
+<h1 style="padding:10px 300px;text-align:center"> TIN TỨC MỚI NHẤT</h1>
+ @foreach(var item in Model) {
+<li class="content__list--item">
+    <a href="" class="content__list--item-link">
+        <img src="~/Asset/Image/hotnew.jpg" alt="" class="content__list--item-link-img">
+    </a>
+    <div class="content__list--item-info">
+        <a href="" class="content__list--item-info-title">@item.TenTinTuc</a>
+        <ul class="content__list--item-info-history">
+            <li class="content__list--item-info-subhistory">
+                <i class="far fa-clock content__list--item-info-icon"></i>
+                <p class="content__list--item-info-specifically">@item.NgayDang</p>
+            </li>
+            @*<li class="content__list--item-info-subhistory">
+                <i class="fas fa-eye content__list--item-info-icon"></i>
+                <p class="content__list--item-info-specifically">Đã xem: 450</p>
+            </li>*@
+            @*<li class="content__list--item-info-subhistory">
+                <i class="far fa-comment content__list--item-info-icon"></i>
+                <p class="content__list--item-info-specifically">Phản hồi: 55</p>
+            </li>*@
+        </ul>
+        <p class="content__list--item-info-p">
+           @item.NoiDung
+        </p>
+    </div>
+</li>
+ }
+<style type="text/css">
+    .grid1 {
+        background-color: var(--white-color);
+    }
+
+    .content {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .content__list {
+        padding-left: 0;
+        list-style: none;
+    }
+
+    .content__list--item {
+        display: flex;
+        border: 1px solid #ccc;
+        box-shadow: 0 1px 3px #ccc;
+        border-radius: 2px;
+        margin: 20px 0;
+    }
+
+    .content__list--item-link {
+        text-decoration: none;
+        color: transparent;
+        width: 320px;
+        height: 160px;
+    }
+
+    .content__list--item-link-img {
+        height: 140px;
+        width: 280px;
+        object-fit: cover;
+        border-radius: 2px;
+        margin: 10px 20px;
+    }
+
+    .content__list--item-info {
+        margin: 30px 0;
+    }
+
+    .content__list--item-info-title {
+        text-decoration: none;
+        color: #183a57;
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 10px 0;
+    }
+
+    .content__list--item-info-history {
+        padding-left: 0;
+        list-style: none;
+        display: flex;
+        margin: 10px 0;
+    }
+
+    .content__list--item-info-subhistory {
+        display: flex;
+        align-items: center;
+        margin-right: 16px;
+        font-size: 1.4rem;
+        color: var(--text-color);
+        opacity: 0.8;
+    }
+
+    .content__list--item-info-icon {
+        margin-right: 4px;
+    }
+
+    .content__list--item-info-specifically {
+        margin: 0;
+    }
+
+    .content__list--item-info-p {
+        font-size: 1.5rem;
+        color: var(--text-color);
+        margin: 10px 0;
+    }
+</style>
+

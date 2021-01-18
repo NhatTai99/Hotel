@@ -1,0 +1,73 @@
+﻿@model IEnumerable<HotelConection.DANHG>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
+}
+    
+<head>
+    <style>
+        ih, td {
+            text-align: center;
+        }
+
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 70%;
+            margin: auto;
+        }
+
+            #customers td, #customers th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            #customers tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            #customers tr:hover {
+                background-color: #ddd;
+            }
+
+            #customers th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #4CAF50;
+                color: white;
+            }
+    </style>
+</head>
+<body>
+    <h1 style="padding:20px">Quản Lí Đánh Giá</h1>
+    <table id="customers">
+        <tr>
+            <th>Họ Tên</th>
+            <th>Số điện thoại</th>
+            <th>Email</th>
+            <th>Nội dung</th>
+
+            <th>Ngày Đánh Giá</th>
+            <th>Xóa</th>
+
+        </tr>
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>@item.HoTen</td>
+        <td>@item.Sdt</td>
+        <td>@item.Email</td>
+        <td>@item.NoiDung</td>
+        <td>@item.NgayDanhGia</td>
+        <td><a href="@Url.Action("xoadanhgia","DanhGiaAdmin",new { id=item.id})"> <i class="fas fa-trash-alt"></i></a></td>
+
+    </tr>
+        }
+
+    </table>
+
+
+</body>
+
+

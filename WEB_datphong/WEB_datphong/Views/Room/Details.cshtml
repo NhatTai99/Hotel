@@ -1,0 +1,92 @@
+﻿@model HotelConection.PHONG
+@{
+    ViewBag.Title = "Details";
+}
+    <title>Chi Tiết Phòng</title>
+<div class="wrap__layout">
+    <div class="hotel__list--item" style="width:70%;text-align:center">
+        @*<a href="@Url.Action("Details",new {id=item.MaPhong})">*@
+        <div class=" detail">
+            <div class="hotel__list" style="padding-left:29px">
+                <div class="zoom">
+                    <img style="width:200px;border:3px solid gray" src="@Model.HinhChinh" alt="" class="wrap__layout--img " />
+                </div>
+            </div>
+            <div class="hotel__list" style="padding-left:10px">
+                <div class="zoom">
+                    <img style="width:200px;border:3px solid gray" src="@Model.Hinh1" alt="" class="wrap__layout--img " />
+                </div>
+            </div>
+            <div class="hotel__list" style="padding-left:10px">
+                <div class="zoom">
+                    <img style="width:200px;border:3px solid gray" src="@Model.Hinh2" alt="" class="wrap__layout--img " />
+                </div>
+            </div>
+            <div style="padding-left:59px">
+                <p style="font-size:20px;font-family:'Times New Roman', Times, serif"><b>Chi tiết phòng:</b><br>@Model.MoTa</p><br>
+                <p style="font-size:15px"><i style="color:red" class="fas fa-utensils"></i> Nhà Hàng -<i style="color:blue" class="fas fa-swimming-pool"></i> bể bơi <br><i style="color:red" class="fas fa-shipping-fast"></i> chỗ giữ xe -<i style="color:rebeccapurple" class="fas fa-spa"></i> spa</p>
+            </div>
+        </div>
+        <h2 class="wrap__layout--name">@Model.TenPhong</h2>
+        @*<h3 class="wrap__layout--place">@item.</h3>*@
+        <div class="wrap__layout--rating">
+            <i class="fas fa-star wrap__layout--rating-icon"></i>
+            <i class="fas fa-star wrap__layout--rating-icon"></i>
+            <i class="fas fa-star wrap__layout--rating-icon"></i>
+            <i class="fas fa-star wrap__layout--rating-icon"></i>
+            <i class="fas fa-star wrap__layout--rating-icon"></i>
+        </div>
+        <div style="padding-left: 433px" class="wrap__layout--more">
+            <i class="fas fa-user-friends wrap__layout--more-icon"></i>
+            <p class="wrap__layout--more-p"><b>Số lần được đặt</b>@Model.SoLuongDaDat</p>
+        </div>
+        <p class="wrap__layout--evaluate">
+            <b>Lượt Xem</b> @Model.LuotView
+        </p>
+        <div class="wrap__layout--vnd">
+            @*<p class="wrap__layout--discount">GIẢM GIÁ 30%</p>*@
+            @*<p class="wrap__layout--cost">2.9 đ</p>*@
+            <p class="wrap__layout--price">@Model.Gia VNĐ</p>
+        </div>
+        </a>
+        @if (User.Identity.IsAuthenticated)
+        {
+            using (Html.BeginForm("Them", "GioHang", FormMethod.Post))
+            {
+                <input type="hidden" id="fname" name="MaPhong" value="@Model.MaPhong">
+                <input type="hidden" id="fname" name="TenPhong" value="@Model.TenPhong">
+                <input type="hidden" id="fname" name="Gia" value="@Model.Gia">
+                <b>Đặt ngày: </b>
+                <input style="width:160px;height:60px" type="datetime-local" id="fname" name="NgayDat" required>
+                
+                <b>Số ngày : </b>
+                <input  style="width:60px;height:60px;font-size:25px" type="number" id="fname" name="SoNgay" value="1" min="1" max="99">
+
+                <input class="wrap__layout--btn" type="submit" value="ĐẶT PHÒNG">
+                
+            }
+        }
+        else {
+        <h1 style="color:red">Vui lòng đăng nhập để đặt phòng</h1>
+                }
+
+    </div>
+</div>
+<style>
+    .hotel__list--item {
+        margin:auto;
+        /* justify-content: space-evenly; */
+        margin-bottom: 16px;
+        padding: 10px 20px;
+        box-shadow: 0 1px 3px #ccc;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+        
+   img : hover {
+        -ms-transform: scale(1.5); /* IE 9 */
+        -webkit-transform: scale(1.5); /* Safari 3-8 */
+        transform: scale(1.5);
+    }
+</style>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
